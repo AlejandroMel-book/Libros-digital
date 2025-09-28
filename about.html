@@ -30,13 +30,16 @@
     }
     .card h3{margin:0 0 8px}
     ul{padding-left:18px;margin:8px 0}
-    .timeline{position:relative;padding-left:28px;}     /* más espacio a la izquierda */
-.tl-item{position:relative;margin:14px 0;padding-left:16px;} /* corre el texto a la derecha */
-.tl-item:before{
-  content:"";position:absolute;left:0;top:4px;width:10px;height:10px;background:var(--accent);
-  border-radius:50%;box-shadow:0 0 0 3px #e5e7eb;
-}
+
+    /* --- FIX del timeline --- */
+    .timeline{position:relative;padding-left:28px;}
+    .tl-item{position:relative;margin:14px 0;padding-left:16px;}
+    .tl-item:before{
+      content:"";position:absolute;left:0;top:4px;width:10px;height:10px;background:var(--accent);
+      border-radius:50%;box-shadow:0 0 0 3px #e5e7eb;
     }
+    /* --- FIN FIX --- */
+
     a.btn{
       display:inline-block;margin-top:12px;padding:10px 16px;background:#10b981;color:#fff;
       text-decoration:none;border-radius:8px;box-shadow:0 6px 16px rgba(16,185,129,.2)
@@ -110,18 +113,19 @@
       <h3>🛠️ Camino recorrido (timeline)</h3>
       <div class="timeline">
         <div class="tl-item"><strong>Idea</strong>: convertir mis escritos en libros que ayuden a otros.</div>
-<div class="tl-item"><strong>Aprendizaje</strong>: HTML, GitHub Pages, Payhip y PayPal.</div>
-<div class="tl-item"><strong>Lanzamiento</strong>: primera venta en línea con entrega automática.</div>
-<div class="tl-item"><strong>Propósito</strong>: inspirar a más personas a crear y emprender con honestidad.</div>
-           </div>
-    }
+        <div class="tl-item"><strong>Aprendizaje</strong>: HTML, GitHub Pages, Payhip y PayPal.</div>
+        <div class="tl-item"><strong>Lanzamiento</strong>: primera venta en línea con entrega automática.</div>
+        <div class="tl-item"><strong>Propósito</strong>: inspirar a más personas a crear y emprender con honestidad.</div>
+      </div>
     </section>
+
     <section class="card" style="margin-top:18px">
       <h3>🤝 Contacto</h3>
       <p>Consultas técnicas, colaboraciones y conferencias breves motivacionales.</p>
       <p><strong>WhatsApp:</strong> <a href="https://wa.me/50576809285" target="_blank">+505 7680 9285</a></p>
     </section>
   </main>
+
   <footer>
     © 2025 Alejandro Meléndez — Hecho con trabajo honesto y cariño.
   </footer>
@@ -136,3 +140,4 @@
   </a>
 </body>
 </html>
+
