@@ -1,241 +1,103 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Librería de Alejandro — Demo (Local)</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Librería Digital de Alejandro</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f9;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #222;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      margin: 0;
+    }
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin: 15px;
+      max-width: 280px;
+      padding: 15px;
+      text-align: center;
+    }
+    .card img {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+    .card h2 {
+      font-size: 1.2em;
+      margin: 15px 0 10px;
+    }
+    .card p {
+      font-size: 0.95em;
+      color: #555;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 15px;
+      background: #28a745;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+    .btn:hover {
+      background: #218838;
+    }
+    footer {
+      background: #222;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+      margin-top: 20px;
+    }
+  </style>
 </head>
-<body class="bg-slate-50 text-slate-800">
-  <header class="sticky top-0 z-30 backdrop-blur bg-white/70 border-b border-slate-200">
-    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-      <div class="flex items-center gap-2">
-        <span class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-indigo-600 text-white font-bold">PDF</span>
-        <h1 class="text-lg font-semibold">Librería de Alejandro — Demo</h1>
-        <span class="ml-3 text-xs px-2 py-1 rounded-full bg-amber-100 text-amber-800">Dropbox + BAC (WhatsApp)</span>
-      </div>
-      <div class="flex items-center gap-3">
-        <input id="buyerEmail" type="email" placeholder="Tu correo (opcional)" class="px-3 py-2 rounded-xl border border-slate-300 text-sm w-60" />
-        <button id="openCart" class="relative inline-flex items-center gap-2 rounded-xl border px-3 py-2 text-sm font-medium bg-white hover:bg-slate-50">
-          <span>Carrito</span>
-          <span id="cartCount" class="ml-1 inline-flex items-center justify-center rounded-full bg-indigo-600 text-white text-xs px-2 py-0.5">0</span>
-        </button>
-      </div>
-    </div>
+<body>
+  <header>
+    <h1>📚 Librería Digital de Alejandro</h1>
+    <p>Tus libros favoritos en PDF, listos para descargar</p>
   </header>
 
-  <main class="max-w-6xl mx-auto px-4 py-8 grid md:grid-cols-3 gap-6">
-    <section class="md:col-span-2">
-      <div class="flex items-end justify-between mb-4">
-        <div>
-          <h2 class="text-xl font-semibold">Catálogo</h2>
-          <p class="text-sm text-slate-600">Cinco títulos listos para descargar (demo) o pagar por transferencia BAC.</p>
-        </div>
-        <input id="search" placeholder="Buscar..." class="px-3 py-2 rounded-xl border border-slate-300 text-sm w-56" />
-      </div>
-      <div id="grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
-    </section>
-    <aside class="space-y-4">
-      <div class="p-4 rounded-2xl bg-white shadow">
-        <h3 class="font-semibold mb-2">Cómo funciona</h3>
-        <ol class="list-decimal pl-5 text-sm text-slate-700 space-y-1">
-          <li>Agregá libros al carrito.</li>
-          <li>Marcá “Acepto los términos”.</li>
-          <li>Elegí <em>Descargar PDF (demo)</em> o <em>Pagar por transferencia BAC (WhatsApp)</em>.</li>
-        </ol>
-      </div>
-    </aside>
-  </main>
+  <div class="container">
+    <!-- Primer libro -->
+    <div class="card">
+      <img src="https://via.placeholder.com/200x280?text=Portada+Libro+1" alt="Portada Libro 1">
+      <h2>Mi inteligente amigo, ¡es una máquina!</h2>
+      <p>Una historia fascinante sobre la relación entre un hombre y la inteligencia artificial.</p>
+      <!-- Aquí ya va tu link real de Payhip -->
+      <a href="https://payhip.com/b/rm9xH" target="_blank" class="btn">Comprar PDF</a>
+    </div>
 
-  <div id="drawer" class="fixed inset-0 z-40 hidden">
-    <div class="absolute inset-0 bg-black/40" data-close></div>
-    <div class="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-2xl p-5 flex flex-col">
-      <div class="flex items-center justify-between mb-4">
-        <h3 class="text-lg font-semibold">Tu carrito</h3>
-        <button class="p-2 rounded-lg hover:bg-slate-100" data-close>X</button>
-      </div>
-      <div id="cartList" class="flex-1 overflow-auto divide-y"></div>
-      <div class="pt-4 space-y-3 border-t mt-4">
-        <div class="flex items-center justify-between text-sm">
-          <span>Subtotal</span><span id="subtotal" class="font-medium">$0.00</span>
-        </div>
-        <label class="flex items-center gap-2 text-sm">
-          <input id="terms" type="checkbox" class="h-4 w-4"/> <span>Acepto los términos</span>
-        </label>
-        <button id="checkout" class="w-full rounded-xl bg-emerald-600 text-white font-medium py-3 disabled:opacity-50 disabled:cursor-not-allowed">Descargar PDF (demo)</button>
-        <button id="transfer" class="w-full rounded-xl bg-blue-600 text-white font-medium py-3 disabled:opacity-50 disabled:cursor-not-allowed">Pagar por transferencia BAC (WhatsApp)</button>
-      </div>
+    <!-- Segundo libro -->
+    <div class="card">
+      <img src="https://via.placeholder.com/200x280?text=Portada+Libro+2" alt="Portada Libro 2">
+      <h2>Un Latido Más</h2>
+      <p>Reflexión sobre la vida, la esperanza y la fuerza del espíritu humano.</p>
+      <!-- Por ahora es un link falso, lo cambiamos cuando subas este a Payhip -->
+      <a href="https://payhip.com/b/TU-LINK-DEL-SEGUNDO-LIBRO" target="_blank" class="btn">Comprar PDF</a>
     </div>
   </div>
 
-  <div id="receipt" class="fixed inset-0 z-50 hidden">
-    <div class="absolute inset-0 bg-black/50" data-close></div>
-    <div class="absolute inset-0 m-auto max-w-2xl h-fit bg-white rounded-2xl shadow-xl p-6">
-      <h3 class="text-xl font-semibold mb-2">¡Compra simulada exitosa!</h3>
-      <p class="mb-4">Descarga tus archivos PDF desde aquí:</p>
-      <div id="downloadList" class="grid sm:grid-cols-2 gap-3"></div>
-      <div class="mt-6 flex justify-end">
-        <button class="px-4 py-2 rounded-xl border hover:bg-slate-50" data-close>Cerrar</button>
-      </div>
-    </div>
-  </div>
-
-  <div id="transferModal" class="fixed inset-0 z-50 hidden">
-    <div class="absolute inset-0 bg-black/50" data-close></div>
-    <div class="absolute inset-0 m-auto max-w-xl h-fit bg-white rounded-2xl shadow-xl p-6">
-      <h3 class="text-xl font-semibold mb-2">Pago por transferencia BAC</h3>
-      <p class="text-sm text-slate-600">Para tu seguridad, compartimos los datos de cuenta <strong>por WhatsApp privado</strong>. Envíanos mensaje y te daremos el número de cuenta y el monto exacto.</p>
-      <div class="mt-4">
-        <a id="waLink" target="_blank" class="inline-flex items-center justify-center w-full rounded-xl bg-green-600 text-white font-medium py-3">Enviar mensaje por WhatsApp</a>
-      </div>
-      <div class="mt-3 text-xs text-slate-500">*No mostramos el número de cuenta en público.</div>
-      <div class="mt-6 flex justify-end">
-        <button class="px-4 py-2 rounded-xl border hover:bg-slate-50" data-close>Cerrar</button>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    const WHATSAPP_NUMBER = "50576809285";
-
-    const PRODUCTS = [
-      { id:'amigo1', title:'Mi inteligente amigo — 1ra entrega (PDF)', price:7.99, url:'https://www.dropbox.com/scl/fi/lzox70lhv6c9t5cxa3vh8/Mi-inteligente-amigo-es-una-m-quina-1ra-Entrega.pdf?rlkey=k0nuircxko02fbaogmkkciyxu&st=sib6bwk5&dl=1', cover:'img/amigo1.png' },
-      { id:'amigo2', title:'Mi inteligente amigo — 2da entrega (PDF)', price:6.99, url:'https://www.dropbox.com/scl/fi/fpsdmwnogwib9yxl884mx/Libro_Mi_inteligente_amigo_2da-Entrega.pdf?rlkey=zhnytblbrn95tyw6iltt71joz&st=spq6lyb8&dl=1', cover:'img/amigo2.png' },
-      { id:'pecados', title:'Los Pecados Invisibles (PDF)', price:5.99, url:'https://www.dropbox.com/scl/fi/utwqpuht2rx16gr2x4ncx/Los_Pecados_Invisibles.pdf?rlkey=ftgz91n5ffd7tolfnd6ahz688&st=nby0jpjy&dl=1', cover:'img/pecados.png' },
-      { id:'latido', title:'Un Latido Más (PDF)', price:4.99, url:'https://www.dropbox.com/scl/fi/co9ng3m0mjkz4qwdss235/Un_Latido_Mas.pdf?rlkey=l1ammdkn6y8pb7kdtz1st30lf&st=v9vo8zfd&dl=1', cover:'img/latido.png' },
-      { id:'oracion', title:'La Última Oración (PDF)', price:6.49, url:'https://www.dropbox.com/scl/fi/yqpj1r3puj50gg74xrghj/La_Ultima_Oracion_Completo.pdf?rlkey=npbpn65patwrhbxzif8o7fm67&st=tqhqfvaq&dl=1', cover:'img/oracion.png' }
-    ];
-
-    const state = { items: [], email: '' };
-    const grid = document.getElementById('grid');
-    const cartCount = document.getElementById('cartCount');
-    const drawer = document.getElementById('drawer');
-    const cartList = document.getElementById('cartList');
-    const subtotalEl = document.getElementById('subtotal');
-    const openCartBtn = document.getElementById('openCart');
-    const terms = document.getElementById('terms');
-    const checkoutBtn = document.getElementById('checkout');
-    const transferBtn = document.getElementById('transfer');
-    const receipt = document.getElementById('receipt');
-    const downloadList = document.getElementById('downloadList');
-    const transferModal = document.getElementById('transferModal');
-    const waLink = document.getElementById('waLink');
-    const emailInput = document.getElementById('buyerEmail');
-    const search = document.getElementById('search');
-
-    function renderProducts(filter=''){
-      grid.innerHTML = '';
-      PRODUCTS.filter(p => p.title.toLowerCase().includes(filter.toLowerCase())).forEach(p => {
-        const card = document.createElement('article');
-        card.className = 'group bg-white rounded-2xl shadow hover:shadow-lg transition overflow-hidden flex flex-col';
-        card.innerHTML = `
-          <div class="aspect-[4/3] overflow-hidden">
-            <img src="${p.cover}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-105 transition"/>
-          </div>
-          <div class="p-4 flex-1 flex flex-col">
-            <h3 class="font-semibold leading-snug">${p.title}</h3>
-            <p class="mt-1 text-sm text-slate-600">PDF descargable</p>
-            <div class="mt-auto flex items-center justify-between">
-              <span class="text-lg font-bold">$${p.price.toFixed(2)}</span>
-              <button data-id="${p.id}" class="add px-3 py-2 rounded-xl bg-indigo-600 text-white text-sm font-medium hover:bg-indigo-700">Agregar</button>
-            </div>
-          </div>`;
-        grid.appendChild(card);
-      });
-    }
-
-    function count(){ cartCount.textContent = state.items.reduce((n,i)=>n+i.qty, 0); }
-    function subtotal(){ return state.items.reduce((s,i)=> s + i.price * i.qty, 0); }
-    function fmt(n){ return '$' + n.toFixed(2); }
-
-    function renderCart(){
-      cartList.innerHTML = '';
-      if(state.items.length === 0){
-        cartList.innerHTML = '<p class="py-8 text-center text-slate-500">Tu carrito está vacío.</p>';
-      } else {
-        state.items.forEach((i, idx) => {
-          const row = document.createElement('div');
-          row.className = 'py-3 flex items-center gap-3';
-          row.innerHTML = `
-            <div class="flex-1">
-              <div class="text-sm font-medium">${i.title}</div>
-              <div class="text-xs text-slate-500">${fmt(i.price)} x ${i.qty}</div>
-            </div>
-            <div class="flex items-center gap-2">
-              <button class="del px-2 py-1 rounded-lg border text-slate-500" data-idx="${idx}">Eliminar</button>
-            </div>`;
-          cartList.appendChild(row);
-        });
-      }
-      subtotalEl.textContent = fmt(subtotal());
-      const enable = state.items.length && terms.checked;
-      checkoutBtn.disabled = !enable;
-      transferBtn.disabled = !enable;
-    }
-
-    function buildOrderText(){
-      const lines = [];
-      lines.push("Hola Alejandro, quiero pagar por transferencia BAC.");
-      lines.push("");
-      lines.push("Mi pedido:");
-      state.items.forEach(i => lines.push(`• ${i.title} — ${fmt(i.price)} x ${i.qty}`));
-      lines.push(`Subtotal: ${fmt(subtotal())}`);
-      if(emailInput.value) lines.push(`Correo: ${emailInput.value}`);
-      lines.push("");
-      lines.push("¿Me compartís el número de cuenta por aquí? Gracias.");
-      return lines.join("%0A");
-    }
-
-    openCartBtn.addEventListener('click', () => { drawer.classList.remove('hidden'); renderCart(); });
-    drawer.addEventListener('click', (e) => { if(e.target.hasAttribute('data-close')) drawer.classList.add('hidden'); });
-    receipt.addEventListener('click', (e) => { if(e.target.hasAttribute('data-close')) receipt.classList.add('hidden'); });
-    transferModal.addEventListener('click', (e) => { if(e.target.hasAttribute('data-close')) transferModal.classList.add('hidden'); });
-
-    document.addEventListener('click', (e) => {
-      if(e.target.classList.contains('add')){
-        const id = e.target.getAttribute('data-id');
-        const prod = PRODUCTS.find(p => p.id === id);
-        const idx = state.items.findIndex(x => x.id === id);
-        if(idx > -1) state.items[idx].qty += 1; else state.items.push({ id: prod.id, title: prod.title, price: prod.price, qty: 1, url: prod.url });
-        count();
-      }
-      if(e.target.classList.contains('del')){
-        const idx = +e.target.getAttribute('data-idx');
-        state.items.splice(idx,1); renderCart(); count();
-      }
-    });
-
-    terms.addEventListener('change', renderCart);
-    emailInput.addEventListener('input', ()=>{});
-    search.addEventListener('input', () => renderProducts(search.value));
-
-    checkoutBtn.addEventListener('click', () => {
-      downloadList.innerHTML = '';
-      state.items.forEach(i => {
-        const card = document.createElement('div');
-        card.className = 'border rounded-xl p-3 bg-white flex items-center justify-between gap-3';
-        card.innerHTML = `
-          <div class="text-sm">
-            <div class="font-medium">${i.title}</div>
-            <div class="text-xs text-slate-500">PDF</div>
-          </div>
-          <a href="${i.url}" download class="px-3 py-2 rounded-xl bg-emerald-600 text-white text-sm font-medium hover:bg-emerald-700">Descargar</a>`;
-        downloadList.appendChild(card);
-      });
-      state.items = []; renderCart(); count();
-      receipt.classList.remove('hidden');
-    });
-
-    document.getElementById('transfer').addEventListener('click', () => {
-      if(!state.items.length || !terms.checked) return;
-      const text = buildOrderText();
-      const link = `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
-      document.getElementById('waLink').href = link;
-      transferModal.classList.remove('hidden');
-    });
-
-    renderProducts();
-    count();
-  </script>
+  <footer>
+    <p>© 2025 Alejandro Meléndez - Todos los derechos reservados</p>
+  </footer>
 </body>
 </html>
+
